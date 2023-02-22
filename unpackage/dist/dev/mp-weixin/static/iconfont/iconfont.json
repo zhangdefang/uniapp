@@ -1,0 +1,114 @@
+{
+  "id": "3859412",
+  "name": "uniapp-实践",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "5387990",
+      "name": "个人头像_o",
+      "font_class": "gerentouxiang_o",
+      "unicode": "ebac",
+      "unicode_decimal": 60332
+    },
+    {
+      "icon_id": "6775644",
+      "name": "爱心",
+      "font_class": "aixin",
+      "unicode": "eca1",
+      "unicode_decimal": 60577
+    },
+    {
+      "icon_id": "11891790",
+      "name": "chat",
+      "font_class": "chat",
+      "unicode": "e66d",
+      "unicode_decimal": 58989
+    },
+    {
+      "icon_id": "683384",
+      "name": "积分",
+      "font_class": "jifen",
+      "unicode": "e60a",
+      "unicode_decimal": 58890
+    },
+    {
+      "icon_id": "1467441",
+      "name": "vip",
+      "font_class": "vip",
+      "unicode": "e6b3",
+      "unicode_decimal": 59059
+    },
+    {
+      "icon_id": "1715050",
+      "name": "资金归集",
+      "font_class": "zijinguiji",
+      "unicode": "e630",
+      "unicode_decimal": 58928
+    },
+    {
+      "icon_id": "4511762",
+      "name": "关于",
+      "font_class": "guanyu",
+      "unicode": "e633",
+      "unicode_decimal": 58931
+    },
+    {
+      "icon_id": "5111263",
+      "name": "头像-空",
+      "font_class": "touxiang-kong",
+      "unicode": "e660",
+      "unicode_decimal": 58976
+    },
+    {
+      "icon_id": "5203287",
+      "name": "旗帜",
+      "font_class": "qizhi",
+      "unicode": "e631",
+      "unicode_decimal": 58929
+    },
+    {
+      "icon_id": "5387888",
+      "name": "全局设置_o",
+      "font_class": "quanjushezhi_o",
+      "unicode": "eb80",
+      "unicode_decimal": 60288
+    },
+    {
+      "icon_id": "10232772",
+      "name": "问题",
+      "font_class": "wenti",
+      "unicode": "e78d",
+      "unicode_decimal": 59277
+    },
+    {
+      "icon_id": "13087847",
+      "name": "物流订单",
+      "font_class": "wuliudingdan",
+      "unicode": "e7c7",
+      "unicode_decimal": 59335
+    },
+    {
+      "icon_id": "14130968",
+      "name": "写作专项课",
+      "font_class": "xiezuozhuanxiangke",
+      "unicode": "e607",
+      "unicode_decimal": 58887
+    },
+    {
+      "icon_id": "23942938",
+      "name": "打卡签到",
+      "font_class": "dakaqiandao",
+      "unicode": "f8fa",
+      "unicode_decimal": 63738
+    },
+    {
+      "icon_id": "31239723",
+      "name": "帮办代办",
+      "font_class": "bangbandaiban",
+      "unicode": "100dc",
+      "unicode_decimal": 65756
+    }
+  ]
+}

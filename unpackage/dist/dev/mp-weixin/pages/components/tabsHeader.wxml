@@ -1,0 +1,1 @@
+<view><view class="wx_height" style="{{'height:'+(wx_height)+';'}}"></view></view>
