@@ -6,3 +6,4 @@
    注意在使用iconfont引入的时候iconfont.css文件需要修改路径,放在static静态资源里面。
 5、onLoad:监听页面加载，接受上个页面传递的参数。onShow：监听页面显示，只要页面出现就会触发。onReady：监听页面初始化渲染完成。onHide:监听页面隐藏。
    onUnload：监听页面卸载。
+6、ignore忽略文件：新建.gitignore文件（执行命令touch .gitignore）第二步将ignore文件使用记事本打开将需要忽略的名字添加上去，第三步提交上去（如果已经提交了unpackage的话执行命令git rm -r --cached unpackage）   
