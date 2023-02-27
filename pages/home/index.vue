@@ -40,7 +40,7 @@
 			</u-tabs>
 		</view>
 		<section>
-			<scroll-view scroll-y="true">
+			<scroll-view scroll-y="true" v-if="flagId === 'first'">
 				<u-back-top :scroll-top="scrollTop"></u-back-top>
 				<view class="cantory" v-for="(item,index) in content" :key="item.ratio">
 					<view class="number">
@@ -60,7 +60,6 @@
 						<view class="badges" v-if="item.vFlag">
 							v
 						</view>
-						<!-- <u-badge v-if="item.vFlag" type="warning" shape="circle" value="v" :absolute="true" style=""></u-badge> -->
 					</view>
 					<view class="infors">
 						<view class="informate" v-for="items in item.infors" :key="item.address">
@@ -69,6 +68,10 @@
 						</view>
 					</view>
 				</view>
+			</scroll-view>
+			
+			<scroll-view v-if="flagId === 'second'">
+				111
 			</scroll-view>
 		</section>
 	</view>
@@ -440,7 +443,7 @@
 						address: '安徽省滁州市来安县'
 					}]
 				}],
-				flagId: ''
+				flagId: 'first'
 			}
 		},
 		onLoad() {
@@ -453,7 +456,6 @@
 				this.scrollTop = e.scrollTop;
 			},
 			itemClick(item) {
-
 				let {
 					id
 				} = item
