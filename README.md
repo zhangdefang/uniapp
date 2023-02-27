@@ -7,3 +7,4 @@
 5、onLoad:监听页面加载，接受上个页面传递的参数。onShow：监听页面显示，只要页面出现就会触发。onReady：监听页面初始化渲染完成。onHide:监听页面隐藏。
    onUnload：监听页面卸载。
 6、ignore忽略文件：新建.gitignore文件（执行命令touch .gitignore）第二步将ignore文件使用记事本打开将需要忽略的名字添加上去，第三步提交上去（如果已经提交了unpackage的话执行命令git rm -r --cached unpackage）   
+7、配置反向代理（1）、在manifest.json的h5下方配置代理，（2）、直接在vue.config.js配置。

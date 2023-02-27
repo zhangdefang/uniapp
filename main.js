@@ -4,9 +4,11 @@ import App from './App'
 import Vue from 'vue'
 import uView from "uview-ui";
 import store from './store/index.js'
+import request from './request/index.js'
 Vue.use(uView);
 
 Vue.prototype.$store = store
+Vue.prototype.$request = request
 Vue.config.productionTip = false
 App.mpType = 'app'
 const app = new Vue({

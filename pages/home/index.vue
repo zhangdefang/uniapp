@@ -69,9 +69,9 @@
 					</view>
 				</view>
 			</scroll-view>
-			
+
 			<scroll-view v-if="flagId === 'second'">
-				111
+
 			</scroll-view>
 		</section>
 	</view>
@@ -81,7 +81,7 @@
 	import store from '../../store/index.js'
 	import headerNav from '../components/tabsHeader.vue'
 	export default {
-		components:{
+		components: {
 			headerNav
 		},
 		data() {
@@ -449,9 +449,33 @@
 		onLoad() {
 
 		},
-		mounted() {
+		async mounted() {
+			await this.request()
 		},
 		methods: {
+			async request() {
+				// this.$request.get('apis/microservice/weather', {
+				// 	cityid: '101010100'
+				// }, {
+				// 	native: false
+				// }).then(res => {
+				// 	//异步操作成功
+				// 	console.log(res)
+				// }).catch(res => {
+				// 	//异步操作失败
+				// 	console.log(res)
+				// }).finally(res => {
+				// 	//异步操作完成
+				// });
+				uni.request({
+					url: '/apis/microservice/weather?cityid=101010100',
+					method: 'GET',
+					success: (res) => {
+						console.log(res.data);
+						this.text = 'request success';
+					}
+				})
+			},
 			onPageScroll(e) {
 				this.scrollTop = e.scrollTop;
 			},
