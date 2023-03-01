@@ -71,26 +71,18 @@
 	"vueVersion": "2",
 	"h5": {
 		"devServer": {
-			// "port" : 8080, //浏览器运行端口
-			"disableHostCheck" : true, //设置跳过host检查
+			"disableHostCheck": true, //设置跳过host检查
 			"proxy": {
-				"/apis": {
-					"target": "http://apistore.baidu.com",
+				"/dpc": {
+					"target": "http://localhost:9090/dpc",
 					"changeOrigin": true,
 					"secure": false,
 					"pathRewrite": {
-						"^/apis": ""
-					}
-				},
-				"/baseUrlBuild": {
-					"target": "http://zhbz-test.xxx.com",
-					"changeOrigin": true,
-					"secure": false,
-					"pathRewrite": {
-						"^/baseUrlBuild": "" //路径重写，将接口路径中以/api开头的部分替换掉
+						"^/dpc": ""
 					}
 				}
-			}
+			},
+			"port": 8080
 		},
 		"template": "static/index.html"
 	}

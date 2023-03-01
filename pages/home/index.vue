@@ -454,25 +454,11 @@
 		},
 		methods: {
 			async request() {
-				// this.$request.get('apis/microservice/weather', {
-				// 	cityid: '101010100'
-				// }, {
-				// 	native: false
-				// }).then(res => {
-				// 	//异步操作成功
-				// 	console.log(res)
-				// }).catch(res => {
-				// 	//异步操作失败
-				// 	console.log(res)
-				// }).finally(res => {
-				// 	//异步操作完成
-				// });
-				uni.request({
-					url: '/apis/microservice/weather?cityid=101010100',
-					method: 'GET',
-					success: (res) => {
-						console.log(res.data);
-						this.text = 'request success';
+				this.$https({
+					url: '/api/hello',
+					method: "get",
+					success: res => {
+						console.log(res)
 					}
 				})
 			},
