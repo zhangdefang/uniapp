@@ -450,15 +450,19 @@
 
 		},
 		async mounted() {
-			await this.request()
+			// await this.request()
 		},
 		methods: {
 			async request() {
-				this.$https({
-					url: '/api/hello',
+				await this.$https({
+					url: 'api/hello',
 					method: "get",
 					success: res => {
-						console.log(res)
+						let {
+							code,
+							msg,
+							data
+						} = res
 					}
 				})
 			},

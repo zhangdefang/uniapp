@@ -26,38 +26,32 @@ module.exports = (params) => {
 			title: "加载中"
 		})
 	}
-	//	发起网络请求
-	uni.request({
-		url: url,
-		method: method || "GET",
-		header: header,
-		data: data,
-		dataType: "json",
-		sslVerify: false, //	是否验证ssl证书
-		success: res => {
-			if (res.statusCode && res.statusCode != 200) {
-				//	api错误
+
+	return new Promise((resolve, reject) => {
+		//	发起网络请求
+		uni.request({
+			url: url,
+			method: method || "GET",
+			header: header,
+			data: data,
+			dataType: "json",
+			sslVerify: false, //	是否验证ssl证书
+			success: res => {
+				if (res.statusCode && res.statusCode != 200) {
+					//	api错误
+					uni.showModal({
+						content: res.msg
+					})
+					return;
+				}
+				resolve(res)
+			},
+			fail: err => {
 				uni.showModal({
-					content: res.msg
+					content: err.errMsg
 				})
-				return;
+				reject(err)
 			}
-			typeof params.success == "function" && params.success(res.data);
-			uni.hideLoading()
-		},
-		fail: err => {
-			// console.log(err)
-			uni.hideLoading()
-			uni.showModal({
-				content: err.errMsg
-			})
-			typeof params.fail == "function" && params.fail(err.data);
-		},
-		complete: (e) => {
-			// console.log("请求完成");
-			// uni.hideLoading()
-			typeof params.complete == "function" && params.complete(e.data);
-			return;
-		}
+		})
 	})
 }

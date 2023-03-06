@@ -9,9 +9,9 @@
 				<u-col span="9">
 				</u-col>
 				<u-col span="3">
-					<view class="zhiliao">
+					<view class="zhiliao" @click="editInfor()">
 						<u-icon name="edit-pen" color="#fff" size="20"></u-icon>
-						<view @click="editInfor()" class="bjzl">编辑资料</view>
+						<view class="bjzl">编辑资料</view>
 					</view>
 				</u-col>
 			</u-row>
@@ -40,7 +40,7 @@
 				</u-col>
 			</u-row>
 			<u-row>
-				<u-col textAlign="center" style="font-size:12px" :span="item.span" v-for="(item,index) in fans"
+				<u-col textAlign="center" style="font-size:12px" :span="item.span" v-for="(item,index) in logoFans"
 					:key="index">
 					<view>{{item.number}} <span v-show="item.flag">w</span></view>
 					<text>{{item.conts}}</text>
@@ -79,29 +79,29 @@
 				photoFlag: true,
 				logoStatus: '未登录',
 				vip: '未认证',
-				fans: [{
+				logoFans: [{
 						span: '1'
 					}, {
 						span: '2',
-						number: 3.60,
+						number: 0,
 						conts: '获赞',
 						flag: true
 					},
 					{
 						span: '3',
-						number: 7.22,
+						number: 0,
 						conts: '粉丝',
 						flag: true
 					},
 					{
 						span: '3',
-						number: 365,
+						number: 0,
 						conts: '关注',
 						flag: false
 					},
 					{
 						span: '2',
-						number: 3.14,
+						number: 0,
 						conts: '收藏',
 						flag: true
 					},
@@ -157,10 +157,49 @@
 			}
 		},
 		created() {},
-		mounted() {
-
+		async mounted() {
+			// await this.request()
 		},
 		methods: {
+			async request() {
+				await this.$https({
+					url: 'api/hello',
+					method: "get",
+					success: res => {
+						let {
+							code,
+							msg,
+							data
+						} = res
+						if (code == 200) {
+							let {
+								praise,
+								fans,
+								focus,
+								collects
+							} = data
+							this.logoFans.forEach((item, index) => {
+								switch (index) {
+									case 1:
+										item.number = praise
+										break;
+									case 2:
+										item.number = fans
+										break;
+									case 3:
+										item.number = focus
+										break;
+									case 4:
+										item.number = collects
+										break;
+									default:
+										break;
+								}
+							})
+						}
+					}
+				})
+			},
 			navigateHandle() {
 				let {
 					name,
