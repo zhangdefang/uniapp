@@ -158,45 +158,40 @@
 		},
 		created() {},
 		async mounted() {
-			// await this.request()
+			await this.logoMessage()
 		},
 		methods: {
-			async request() {
-				await this.$https({
+			async logoMessage() {
+				let {
+					data,
+					code
+				} = await this.$https({
 					url: 'api/hello',
 					method: "get",
-					success: res => {
-						let {
-							code,
-							msg,
-							data
-						} = res
-						if (code == 200) {
-							let {
-								praise,
-								fans,
-								focus,
-								collects
-							} = data
-							this.logoFans.forEach((item, index) => {
-								switch (index) {
-									case 1:
-										item.number = praise
-										break;
-									case 2:
-										item.number = fans
-										break;
-									case 3:
-										item.number = focus
-										break;
-									case 4:
-										item.number = collects
-										break;
-									default:
-										break;
-								}
-							})
-						}
+				})
+				if (code != 200) return
+				let {
+					attention,
+					collect,
+					fans,
+					praised
+				} = data
+				this.logoFans.forEach((item, index) => {
+					switch (index) {
+						case 1:
+							item.number = praised
+							break;
+						case 2:
+							item.number = fans
+							break;
+						case 3:
+							item.number = attention
+							break;
+						case 4:
+							item.number = collect
+							break;
+						default:
+							break;
 					}
 				})
 			},

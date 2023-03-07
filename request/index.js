@@ -21,11 +21,11 @@ module.exports = (params) => {
 		}
 	}
 	//	发起请求 加载动画
-	if (!params.hideLoading) {
-		uni.showLoading({
-			title: "加载中"
-		})
-	}
+	// if (!params.hideLoading){
+	// 	uni.showLoading({
+	// 		title: "加载中"
+	// 	})
+	// }
 
 	return new Promise((resolve, reject) => {
 		//	发起网络请求
@@ -44,7 +44,8 @@ module.exports = (params) => {
 					})
 					return;
 				}
-				resolve(res)
+				let lintRes = res.data
+				resolve(lintRes)
 			},
 			fail: err => {
 				uni.showModal({
