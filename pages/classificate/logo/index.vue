@@ -1,5 +1,6 @@
 <template>
 	<view class="mine">
+
 		<header-nav></header-nav>
 		<header>
 			<view class="kongbai">
@@ -166,7 +167,7 @@
 					data,
 					code
 				} = await this.$https({
-					url: 'api/hello',
+					url: '/hello',
 					method: "get",
 				})
 				if (code != 200) return
@@ -197,11 +198,11 @@
 			},
 			navigateHandle() {
 				let {
-					name,
-					phone
+					username,
+					password
 				} = store.getters.userData
-				this.logoStatus = name
-				if (phone) return this.photoFlag = !this.photoFlag
+				this.logoStatus = username
+				if (password) return this.photoFlag = !this.photoFlag
 			},
 
 			navigateHandles() {

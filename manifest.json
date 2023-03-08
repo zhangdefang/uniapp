@@ -74,7 +74,7 @@
 			"disableHostCheck": true, //设置跳过host检查
 			"proxy": {
 				"/dpc": {
-					"target": "http://localhost:9090/dpc",
+					"target": "http://localhost:9090/dpc/api",
 					"changeOrigin": true,
 					"secure": false,
 					"pathRewrite": {

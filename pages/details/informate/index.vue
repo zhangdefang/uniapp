@@ -4,11 +4,11 @@
 			<view class="u-demo-block__content">
 				<!-- 注意，如果需要兼容微信小程序，最好通过setRules方法设置rules规则 -->
 				<u--form labelPosition="left" :model="model1" ref="form1">
-					<u-form-item label="姓名:" prop="userInfo.name" borderBottom ref="item1">
-						<u--input v-model="model1.userInfo.name" placeholder="姓名,只能为中文"></u--input>
+					<u-form-item label="姓名:" prop="userInfo.username" borderBottom ref="item1">
+						<u--input v-model="model1.userInfo.username" placeholder="姓名,只能为中文"></u--input>
 					</u-form-item>
-					<u-form-item label="手机号码:" prop="userInfo.phone" borderBottom ref="item1">
-						<u--input v-model="model1.userInfo.phone" placeholder="输入手机号"></u--input>
+					<u-form-item label="密码:" prop="userInfo.password" borderBottom ref="item1">
+						<u--input v-model="model1.userInfo.password" type="password" placeholder="输入密码"></u--input>
 					</u-form-item>
 				</u--form>
 				<u-button type="primary" text="提交" customStyle="margin-top: 30px" @click="submit"></u-button>
@@ -25,12 +25,12 @@
 			return {
 				model1: {
 					userInfo: {
-						name: '',
-						phone: ''
+						username: '',
+						password: ''
 					},
 				},
 				rules: {
-					'userInfo.name': [{
+					'userInfo.username': [{
 						type: 'string',
 						required: true,
 						message: '请填写姓名',
@@ -45,10 +45,10 @@
 						// 触发器可以同时用blur和change，二者之间用英文逗号隔开
 						trigger: ["change", "blur"],
 					}],
-					'userInfo.phone': {
+					'userInfo.password': {
 						type: 'string',
 						required: true,
-						message: '请填写手机号码',
+						message: '请输入密码',
 						trigger: ['blur', 'change']
 					}
 				}
@@ -59,13 +59,28 @@
 			this.$refs.form1.setRules(this.rules)
 		},
 		methods: {
+			async logoIn() {
+				// let res = await this.$request({
+				// 	url:'',
+				// })
+			},
 			submit() {
 				// 如果有错误，会在catch中返回报错信息数组，校验通过则在then中返回true
-				this.$refs.form1.validate().then(res => {
+				this.$refs.form1.validate().then(async res => {
 					let {
 						userInfo
 					} = this.model1
 					if (res) {
+						let {
+							code,
+							data,
+							msg
+						} = await this.$https({
+							url: '/logo',
+							method: 'post',
+							data: userInfo
+						})
+						if (!data) return
 						store.commit('setUserData', userInfo)
 						// redirectTo,switchTab无法
 						uni.switchTab({
@@ -82,7 +97,7 @@
 				})
 			},
 			reset() {
-				const validateList = ['userInfo.name']
+				const validateList = ['userInfo.username']
 				this.$refs.form1.resetFields()
 				this.$refs.form1.clearValidate()
 				setTimeout(() => {

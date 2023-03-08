@@ -21,7 +21,7 @@ module.exports = (params) => {
 		}
 	}
 	//	发起请求 加载动画
-	// if (!params.hideLoading){
+	// if (!params.hideLoading) {
 	// 	uni.showLoading({
 	// 		title: "加载中"
 	// 	})
